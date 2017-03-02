@@ -7,7 +7,7 @@ PHP parser for messages conforming to the IRC protocol including support for IRC
 ##### Exmaple 1: 
 Message without Message Tags.
 ```php
-$msg = new IRCMessage(":test!test@test.my.irc.server JOIN #test");
+$msg = new Lightircparser\IRCMessage(":test!test@test.my.irc.server JOIN #test");
 $msg->phrase();
 echo json_encode($msg,JSON_PRETTY_PRINT);
 ```
@@ -34,7 +34,7 @@ Output:
 ##### Exmaple 2:
 Message with IRCv3.2 Message Tags.
 ```php
-$msg = new IRCMessage("@display-name=TestUser;id=2362364236234634634;room-id=31462363463;sent-ts=1488375811149;admin=0;testp= :testuser!testuser@testuser.my.irc.server PRIVMSG #test :Hello! World");
+$msg = new Lightircparser\IRCMessage("@display-name=TestUser;id=2362364236234634634;room-id=31462363463;sent-ts=1488375811149;admin=0;testp= :testuser!testuser@testuser.my.irc.server PRIVMSG #test :Hello! World");
 $msg->phrase();
 echo json_encode($msg,JSON_PRETTY_PRINT);
 ```
