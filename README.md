@@ -71,8 +71,8 @@ I could not find a parser for PHP with Message Tags support so I made one.
 
 ## Installation
 
-
+    composer require zabouth/lightircparser
 
 ## License
 
-A short snippet describing the license (MIT, Apache, etc.)
+GPL-3.0
