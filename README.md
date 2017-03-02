@@ -67,7 +67,7 @@ Output:
 ```
 ## Motivation
 
-I could not find a parser for PHP with Message Tags support so I made one.
+I could not find a parser for PHP with message tags support so I made one.
 
 ## Installation
 
