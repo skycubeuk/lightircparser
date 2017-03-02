@@ -1,0 +1,21 @@
+{
+    "name": "zabouth/lightircparser",
+    "description": "PHP parser for messages conforming to the IRC protocol including support for IRCv3.2 Message Tags",
+    "type": "library",
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Graeme Dyas",
+            "email": "admin@zabouth.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.3"
+    },
+ "autoload": {
+        "psr-4": {
+            "Lightircparser\\": "./src/"
+        }
+    }
+}
