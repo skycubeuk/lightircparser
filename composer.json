@@ -1,5 +1,5 @@
 {
-    "name": "zabouth/lightircparser",
+    "name": "skycube/lightircparser",
     "description": "PHP parser for messages conforming to the IRC protocol including support for IRCv3.2 Message Tags",
     "type": "library",
     "license": "GPL-3.0",
