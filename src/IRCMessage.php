@@ -111,4 +111,8 @@ class IRCMessage {
 			}
 		}
 	}
+
+	public function to_json() {
+		return json_encode($this,JSON_PRETTY_PRINT);
+	}
 }
