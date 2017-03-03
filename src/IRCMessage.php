@@ -115,4 +115,31 @@ class IRCMessage {
 	public function to_json() {
 		return json_encode($this,JSON_PRETTY_PRINT);
 	}
+	public function to_xml() {
+		$data = (array) $this;
+		$xml = simplexml_load_string("<?xml version='1.0' encoding='utf-8'?><line />");
+		$xml->addChild("ts", $this->ts);
+		$xml->addChild("has_message_tags", $this->has_message_tags);
+		$xml->addChild("has_prefix", $this->has_prefix);
+		$mt = $xml->addChild("message_tags");
+		$px = $xml->addChild("prefix");
+		if ($this->has_message_tags) {
+			foreach($this->message_tags as $k => $v) {
+				$mt->addChild($k,$v);
+			}
+		}
+		if ($this->has_prefix) {
+			foreach($this->prefix as $k => $v) {
+				$px->addChild($k,$v);
+			}
+		}
+		$xml->addChild("command", $this->command);
+		foreach ($this->params as $v) {
+			$xml->addChild("params", $v);
+		}
+		$xml->addChild("raw",$this->raw);
+		return $xml->asXML();
+
+	}
+
 }
