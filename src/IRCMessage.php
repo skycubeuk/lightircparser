@@ -120,6 +120,7 @@ class IRCMessage {
 		$data = (array) $this;
 		$xml = simplexml_load_string("<?xml version='1.0' encoding='utf-8'?><line />");
 		$xml->addChild("ts", $this->ts);
+		$xml->addChild("datetime", $this->datetime);
 		$xml->addChild("has_message_tags", $this->has_message_tags);
 		$xml->addChild("has_prefix", $this->has_prefix);
 		$mt = $xml->addChild("message_tags");
