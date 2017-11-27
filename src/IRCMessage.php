@@ -4,6 +4,7 @@ namespace Lightircparser;
 
 class IRCMessage {
 	public $ts;
+	public $datetime;
 	private $raw_processed;
 	public $has_message_tags;
 	public $has_prefix;
@@ -13,11 +14,11 @@ class IRCMessage {
 	public $params = array();
 	public $raw;
 
-
 	function __construct($message) {
-		$this->raw = $message;
-		$this->raw_processed = $message;
+		$this->raw = rtrim($message);
+		$this->raw_processed = rtrim($message);
 		$this->ts = round(microtime(true) * 1000);
+		$this->datetime = date("Y-m-d H:i:s", $this->ts / 1000);
 	}
 
 	public function phrase() {
