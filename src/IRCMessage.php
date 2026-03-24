@@ -54,10 +54,10 @@ class IRCMessage {
 			$prefix = explode(" ", $this->raw_processed, 2);
 			$this->raw_processed = $prefix[1];
 			$prefix[0] = ltrim($prefix[0], ":");
-			if (strpos($prefix[0], "!")) {
+			if (strpos($prefix[0], "!") !== false) {
 				$has_user = true;
 			}
-			if (strpos($prefix[0], "@")) {
+			if (strpos($prefix[0], "@") !== false) {
 				$has_host = true;
 			}
 
@@ -83,7 +83,11 @@ class IRCMessage {
 				$this->prefix['nick'] = $nick;
 				$this->prefix['host'] = $host;
 			} else {
-				$this->prefix['servername'] = $prefix[0];
+				if (strpos($prefix[0], '.') !== false) {
+					$this->prefix['servername'] = $prefix[0];
+				} else {
+					$this->prefix['nick'] = $prefix[0];
+				}
 			}
 		} else {
 			$this->has_prefix = false;
@@ -93,7 +97,11 @@ class IRCMessage {
 	private function phrase_command() {
 		$command = explode(" ", $this->raw_processed, 2);
 		$this->command = $command[0];
-		$this->raw_processed = $command[1];
+		if (isset($command[1])) {
+			$this->raw_processed = $command[1];
+		} else {
+			$this->raw_processed = '';
+		}
 	}
 
 	private function phrase_params() {
