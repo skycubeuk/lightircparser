@@ -93,7 +93,17 @@ class IRCMessage {
 	private function phrase_command() {
 		$command = explode(" ", $this->raw_processed, 2);
 		$this->command = $command[0];
-		$this->raw_processed = $command[1];
+
+		if (isset($command[1])) {
+			$this->raw_processed = $command[1];
+		} else {
+			$this->raw_processed = '';
+		}
+
+		// If this is a "MODE" message, let's unset the servername
+		if ($this->command == 'MODE') {
+			unset($this->prefix['servername']);
+		}
 	}
 
 	private function phrase_params() {
