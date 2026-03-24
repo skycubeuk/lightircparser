@@ -46,13 +46,14 @@ jobs:
           script: |
             const newTag = "${{ steps.version.outputs.tag }}";
             const prevTag = "${{ steps.version.outputs.prev_tag }}";
+            const headSha = context.sha;
 
             let body = 'See commit history for changes.';
             if (prevTag) {
               const { data: comparison } = await github.rest.repos.compareCommitsWithBasehead({
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                basehead: `${prevTag}...${newTag}`,
+                basehead: `${prevTag}...${headSha}`,
               }).catch(() => ({ data: { commits: [] } }));
 
               if (comparison.commits.length > 0) {
